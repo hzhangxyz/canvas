@@ -48,11 +48,13 @@ Promise.all([
   )
 ]).then(
   ()=>{
-    for(i of exp){
+    for(j of exp){
+      i = [parseInt(j[0]),parseInt(j[1]),parseInt(j[2])]
       if(crt[i[0]+","+i[1]]!=i[2]){
         dif.push(i)
       }
     }
+    console.log( "Num: "+(exp.length-dif.length)+" "+exp.length+"Rank: "+100.*(exp.length-dif.length)/exp.length+"%" )
   }
 ).then(
   ()=>{

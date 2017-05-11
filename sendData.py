@@ -47,7 +47,7 @@ for i in open("data","r"):
         paint.append(data)
 
 l = len(paint)
-print 100.*(ll-l)/ll,"%"
+print "Num: ",ll-l,ll,"Rank: ",100.*(ll-l)/ll,"%"
 
 if l == 0:
     exit()
