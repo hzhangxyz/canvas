@@ -1,0 +1,70 @@
+var sender = (x,y,color)=>fetch(
+  'http://canvas.ourscgy.ustc.edu.cn/canvas/modify',
+  {
+     headers:
+     {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+     },
+     method: "POST",
+     body: JSON.stringify({canvas:[{x,y,color}],count:50000})
+  }
+).then(
+  (res)=>res.json()
+).then(
+  json=>console.log(json.flag)
+)
+
+var crt = {}
+var exp = []
+var dif = []
+
+Promise.all([
+  fetch(
+    'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1'
+  ).then(
+    (res)=>res.json()
+  ).then(
+    json=>{
+      for(i of json.data){
+        crt[i.x+","+i.y]=i.color
+      }
+    }
+  ),
+  fetch(
+    'https://raw.githubusercontent.com/hzhangxyz/canvas/master/data'
+  ).then(
+    (res)=>res.text()
+  ).then(
+    text=>{
+      for(i of text.split("\n")){
+        var p = i.split("\t")
+        if(p.length!=3){
+          continue
+        }
+        exp.push(p)
+      }
+    }
+  )
+]).then(
+  ()=>{
+    for(i of exp){
+      if(crt[i[0]+","+i[1]]!=i[2]){
+        dif.push(i)
+      }
+    }
+  }
+).then(
+  ()=>{
+    l = dif.length
+    for(var i=0;i<10;i++){
+      var idx = parseInt(Math.random()*l)
+      sender(
+        parseInt(dif[idx][0]),
+        parseInt(dif[idx][1]),
+        parseInt(dif[idx][2])
+      )
+    }
+  }
+)
+
