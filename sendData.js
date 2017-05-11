@@ -22,7 +22,7 @@ var runit=aim_url=>{
 
   Promise.all([
     fetch(
-      'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1',
+      'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1'
     ).then(
       (res)=>res.json()
     ).then(
