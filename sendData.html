@@ -1,4 +1,5 @@
-var runit(aim_url)=()=>{
+<script>
+var runit=aim_url=>{
   var sender = (x,y,color)=>fetch(
     'http://canvas.ourscgy.ustc.edu.cn/canvas/modify',
     {
@@ -8,7 +9,8 @@ var runit(aim_url)=()=>{
          'Content-Type': 'application/json'
        },
        method: "POST",
-       body: JSON.stringify({canvas:[{x,y,color}],count:50000})
+       body: JSON.stringify({canvas:[{x,y,color}],count:50000}),
+       mode: "cors"
     }
   ).then(
     (res)=>res.json()
@@ -22,7 +24,10 @@ var runit(aim_url)=()=>{
 
   Promise.all([
     fetch(
-      'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1'
+      'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1',
+      {
+        mode: "cors"
+      }
     ).then(
       (res)=>res.json()
     ).then(
@@ -33,7 +38,10 @@ var runit(aim_url)=()=>{
       }
     ),
     fetch(
-      aim_url
+      aim_url,
+      {
+        mode: "cors"
+      }
     ).then(
       (res)=>res.text()
     ).then(
@@ -71,5 +79,6 @@ var runit(aim_url)=()=>{
     }
   )
 }
-always=aim_url=>setInterval(runit(aim_url),120*1000)
-always('https://raw.githubusercontent.com/hzhangxyz/canvas/master/data')
+
+runit('https://raw.githubusercontent.com/hzhangxyz/canvas/master/data')
+</script>
