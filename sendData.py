@@ -36,6 +36,9 @@ with open("output","w") as f:
 paint = []
 
 for i in open("data","r"):
+    p = i.split("\t")
+    if len(p) is not 3:
+        continue
     data = map(int,i.split("\t"))
     if canvas[data[0]][data[1]] is not data[2]:
         paint.append(data)
