@@ -43,7 +43,7 @@ for i in open("data","r"):
     if len(p) is not 3:
         continue
     data = map(int,i.split("\t"))
-    if canvas[data[0]][data[1]] is not data[2]:
+    if canvas[data[0]][data[1]] != data[2]:
         paint.append(data)
 
 l = len(paint)
