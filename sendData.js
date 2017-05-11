@@ -1,4 +1,3 @@
-<script>
 var runit=aim_url=>{
   var sender = (x,y,color)=>fetch(
     'http://canvas.ourscgy.ustc.edu.cn/canvas/modify',
@@ -9,8 +8,7 @@ var runit=aim_url=>{
          'Content-Type': 'application/json'
        },
        method: "POST",
-       body: JSON.stringify({canvas:[{x,y,color}],count:50000}),
-       mode: "cors"
+       body: JSON.stringify({canvas:[{x,y,color}],count:50000})
     }
   ).then(
     (res)=>res.json()
@@ -25,9 +23,6 @@ var runit=aim_url=>{
   Promise.all([
     fetch(
       'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1',
-      {
-        mode: "cors"
-      }
     ).then(
       (res)=>res.json()
     ).then(
@@ -38,10 +33,7 @@ var runit=aim_url=>{
       }
     ),
     fetch(
-      aim_url,
-      {
-        mode: "cors"
-      }
+      aim_url
     ).then(
       (res)=>res.text()
     ).then(
@@ -81,12 +73,5 @@ var runit=aim_url=>{
 }
 
 var url = 'https://raw.githubusercontent.com/hzhangxyz/canvas/master/data'
-if(location.hash!=""){
-    url = location.hash
-}
-if(url[0]=="#"){
-    url = url.slice(1)
-}
 
 runit(url)
-</script>
