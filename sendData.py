@@ -35,7 +35,10 @@ with open("output","w") as f:
 
 paint = []
 
+ll = 0
+
 for i in open("data","r"):
+    ll += 1
     p = i.split("\t")
     if len(p) is not 3:
         continue
@@ -44,6 +47,8 @@ for i in open("data","r"):
         paint.append(data)
 
 l = len(paint)
+print 100.*(ll-l)/ll,"%"
+
 if l == 0:
     exit()
 
