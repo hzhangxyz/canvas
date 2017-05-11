@@ -29,5 +29,11 @@ for i in open("data","r"):
         paint.append(data)
 
 l = len(paint)
+if l == 0:
+    exit()
+
 for i in xrange(10):
-    send(*paint[int(random()*l)])
+    idx = int(random()*l)
+    while paint[idx][2]==0:
+        idx = int(random()*l)
+    send(*paint[idx])
