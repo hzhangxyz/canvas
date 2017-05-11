@@ -21,6 +21,18 @@ canvas = [[0 for j in xrange(200)] for i in xrange(200)]
 for i in data:
     canvas[i["x"]][i["y"]]=i["color"]
 
+
+with open("output","w") as f:
+    for i in canvas:
+        for j in i:
+            b = (j%256)/256.
+            j /= 256
+            g = (j%256)/256.
+            j /= 256
+            r = (j%256)/256.
+            f.write("%f %f %f\n"%(r,g,b))
+
+
 paint = []
 
 for i in open("data","r"):
