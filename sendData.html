@@ -80,5 +80,13 @@ var runit=aim_url=>{
   )
 }
 
-runit('https://raw.githubusercontent.com/hzhangxyz/canvas/master/data')
+var url = 'https://raw.githubusercontent.com/hzhangxyz/canvas/master/data'
+if(location.hash!=""){
+    url = location.hash
+}
+if(url[0]=="#"){
+    url = url.slice(1)
+}
+
+runit(url)
 </script>
