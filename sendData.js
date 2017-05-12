@@ -8,8 +8,7 @@ var runit=aim_url=>{
          "Content-Type": "application/json"
        },
        method: "POST",
-       body: JSON.stringify({canvas:[{x,y,color}],count:50000}),
-       mode: "cors"
+       body: JSON.stringify({canvas:[{x,y,color}],count:100000})
     }
   )
 
@@ -19,7 +18,7 @@ var runit=aim_url=>{
 
   Promise.all([
     fetch(
-      "http://2.718281828.xyz/canvas/update?count=-1"
+      "http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1"
     ).then(
       (res)=>res.text()
     ).then(
