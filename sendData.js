@@ -18,8 +18,8 @@ var runit=aim_url=>{
   var dif = []
 
   Promise.all([
-    fetch(-
-      "http://2.718281828.xyz/canvas/update?count=16000"
+    fetch(
+      "http://2.718281828.xyz/canvas/update?count=-1"
     ).then(
       (res)=>res.text()
     ).then(
