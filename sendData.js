@@ -9,7 +9,7 @@ var runit=aim_url=>{
        },
        method: "POST",
        body: JSON.stringify({canvas:[{x,y,color}],count:50000}),
-       mode: "no-cors"
+       mode: "cors"
     }
   )
 
