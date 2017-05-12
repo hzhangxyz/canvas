@@ -1,19 +1,16 @@
 var runit=aim_url=>{
   var sender = (x,y,color)=>fetch(
-    'http://canvas.ourscgy.ustc.edu.cn/canvas/modify',
+    "http://canvas.ourscgy.ustc.edu.cn/canvas/modify",
     {
        headers:
        {
-         'Accept': 'application/json',
-         'Content-Type': 'application/json'
+         "Accept": "application/json",
+         "Content-Type": "application/json"
        },
        method: "POST",
-       body: JSON.stringify({canvas:[{x,y,color}],count:50000})
+       body: JSON.stringify({canvas:[{x,y,color}],count:50000}),
+       mode: "no-cors"
     }
-  ).then(
-    (res)=>res.json()
-  ).then(
-    json=>console.log(json.flag)
   )
 
   var crt = {}
@@ -21,12 +18,15 @@ var runit=aim_url=>{
   var dif = []
 
   Promise.all([
-    fetch(
-      'http://canvas.ourscgy.ustc.edu.cn/canvas/update?count=-1'
+    fetch(-
+      "http://2.718281828.xyz/canvas/update?count=16000"
     ).then(
-      (res)=>res.json()
+      (res)=>res.text()
     ).then(
-      json=>{
+      text=>{
+        console.log(text.length)
+        console.log(text)
+        json = JSON.parse(text);
         for(i of json.data){
           crt[i.x+","+i.y]=i.color
         }
