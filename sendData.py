@@ -54,6 +54,6 @@ if l == 0:
 
 for i in xrange(10):
     idx = int(random()*l)
-    while (paint[idx][2]==16181480) and (canvas[paint[idx][0][paint[idx][1]]==16382716]) and (random()>0.2):
+    while (paint[idx][2]==16181480) and (canvas[paint[idx][0]][paint[idx][1]]==16382716) and (random()>0.2):
         idx = int(random()*l)
     send(*paint[idx])
