@@ -8,7 +8,7 @@ do
   do
     echo Running "\$"i
     { python sendData.py "\$"i & }
-    while [ "\$"(jobs | wc -l) -ge 10 ]
+    while [ "\$"(jobs | wc -l) -ge 30 ]
     do
       sleep 10
     done
